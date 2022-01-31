@@ -18,14 +18,28 @@
             </template>
         </div>
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-center pt-8 sm:justify-start">
                 <span class="text-4xl">Sarcon</span>
             </div>
 
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div v-if="canLogin" class="px-6 py-4 sm:hidden">
+                        <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 underline">
+                            Dashboard
+                        </Link>
 
+                        <template v-else>
+                            <Link :href="route('login')" class="text-sm text-gray-700 underline">
+                                Log in
+                            </Link>
+
+                            <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
+                                Register
+                            </Link>
+                        </template>
+                    </div>
                 </div>
             </div>
 
